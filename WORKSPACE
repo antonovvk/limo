@@ -14,7 +14,7 @@ git_repository(
 git_repository(
     name = "decmod",
     remote = "https://github.com/antonovvk/decmod",
-    commit = "4d6d5b0aa9a3bce11a4eb648195d944cc3d49848",
+    commit = "4456aa6f3b850ee91cb7242bb08ead498d3a8b65",
 )
 
 new_git_repository(

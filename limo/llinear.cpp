@@ -7,10 +7,12 @@
 
 using namespace std;
 
+void print_null(const char *s) {}
+
 namespace limo {
 
-LibLinearProblem::LibLinearProblem()
-    : MaxIdx_(0)
+LibLinearProblem::LibLinearProblem(int maxIdx)
+    : MaxIdx_(maxIdx)
 {
 }
 
@@ -98,6 +100,7 @@ LibLinearModel::LibLinearModel(LibLinearProblem& p)
     pr.y = &p.Labels_[0];
     pr.x = &p.Features_[0];
 
+    set_print_string_function(print_null);
     LLModel_.reset(train(&pr, &params));
 }
 

@@ -1,5 +1,6 @@
 #include "clar/clar.h"
 #include "llinear.h"
+#include "pwgmd.h"
 
 using namespace std;
 using namespace limo;
@@ -7,6 +8,7 @@ using namespace limo;
 int Main(int argc, char* argv[]) {
     clar::Config cfg("limo", "LiMo playground");
     clar::Switch<'L'> liblinear(cfg, "liblinear", "Run default liblinear setup");
+    clar::Switch<'P'> pwgmd(cfg, "pwgmd", "Run Pairwise GMD");
     clar::FreeInputFileArg<true> trainFile(cfg, "train", "Input train data in libsvm format");
     clar::FreeInputFileArg<true> testFile(cfg, "test", "Input test data in libsvm format");
 
@@ -24,6 +26,9 @@ int Main(int argc, char* argv[]) {
     ModelPtr model;
     if (liblinear) {
         model.reset(new LibLinearModel(*problem));
+    }
+    if (pwgmd) {
+        model.reset(new PairwiseGMD(*problem, 0.9, 10));
     }
 
     if (!model) {

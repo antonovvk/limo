@@ -19,7 +19,7 @@ namespace limo {
         std::vector<feature_node*> Features_;
         std::vector<LibSvmFeaturesPtr> Data_;
 
-        LibLinearProblem();
+        LibLinearProblem(int maxIdx = 0);
         ~LibLinearProblem();
     };
 

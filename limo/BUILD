@@ -1,13 +1,16 @@
 cc_binary(
     name = "limo",
     srcs = [
+        "model.h",
         "llinear.h",
         "llinear.cpp",
-        "model.h",
+        "pwgmd.h",
+        "pwgmd.cpp",
         "main.cpp",
     ],
     deps = [
         "@clar//:lib",
+        "@decmod//:decmod",
         "@liblinear//:liblinear",
     ],
     copts = [
